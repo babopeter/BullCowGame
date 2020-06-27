@@ -10,10 +10,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     PrintLine(TEXT("Please guess the four letter word.")); // 4 letter word hardcoded
     PrintLine(TEXT("Input something and press Enter..."));
     
-    // Setting Up Game
-    HiddenWord = TEXT("cake"); // Set the HiddenWord
-    // Set lives
-
+    SetupGame();// Setting Up Game
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -40,5 +37,10 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     // If No Show GameOver and show HiddenWord
     // Prompt to PlayAgain
     // Check User Input
+}
 
+void UBullCowCartridge::SetupGame()
+{
+    HiddenWord = TEXT("cake");
+    Lives = 4;
 }
