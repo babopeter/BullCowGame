@@ -16,17 +16,20 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
 {
     ClearScreen();
-    
+
     // Checking PlayerGuess
     if(Input == HiddenWord)
     {
         PrintLine(TEXT("You have won!"));
     }
-    else
+    else 
     {
+        if (HiddenWord.Len() != Input.Len())
+        {
+            PrintLine(TEXT("The hidden word is four characters long, try again!."));
+        }
         PrintLine(TEXT("You have lost!"));
     }
-
     // Check if Isogram
     // Check if right number of characters
     // Remove life
