@@ -1,16 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
 
-void UBullCowCartridge::BeginPlay() // When the game starts
+void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
+    SetupGame();
+
+    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord); // Debug line
 
     // Welcoming The Player
     PrintLine(TEXT("Welcome to the Bull Cows Game!"));
-    PrintLine(TEXT("Please guess the four letter word.")); // 4 letter word hardcoded
-    PrintLine(TEXT("Input something and press Enter..."));
-    
-    SetupGame();// Setting Up Game
+    PrintLine(TEXT("Please guess the %i letter word."), HiddenWord.Len());
+    PrintLine(TEXT("Type in your guess and press enter to continue..."));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -26,7 +27,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     {
         if (HiddenWord.Len() != Input.Len())
         {
-            PrintLine(TEXT("The hidden word is four characters long, try again!."));
+            PrintLine(TEXT("The hidden word is %i characters long, try again!."), HiddenWord.Len());
         }
         PrintLine(TEXT("You have lost!"));
     }
